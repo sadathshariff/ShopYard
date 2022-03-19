@@ -19,14 +19,14 @@ export const Navbar = () => {
         <nav>
           <div className="nav-items flex">
             <Link to="/login">
-              <Button btnClass={"btn-secondary"} name={"Login"} />
+              <Button btnclass={"btn-secondary"} name={"Login"} />
             </Link>
             {/* Adding Buttons for now will add icons later */}
             <Link to="/mycart">
-              <Button btnClass={"btn-secondary"} name={"Cart"} />
+              <Button btnclass={"btn-secondary"} name={"Cart"} />
             </Link>
             <Link to="/wishlist">
-              <Button btnClass={"btn-secondary"} name={"WishList"} />
+              <Button btnclass={"btn-secondary"} name={"WishList"} />
             </Link>
           </div>
         </nav>

@@ -1,8 +1,11 @@
-export const Button = ({ name, btnClass }) => {
-  const btnClassName = "btn " + btnClass;
+export const Button = (props) => {
+  const { name, btnclass } = props;
+  const btnClassName = "btn " + btnclass;
   return (
     <>
-      <button className={btnClassName}>{name}</button>
+      <button className={btnClassName} {...props}>
+        {name}
+      </button>
     </>
   );
 };
