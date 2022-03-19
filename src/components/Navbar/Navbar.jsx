@@ -22,7 +22,7 @@ export const Navbar = () => {
               <Button btnclass={"btn-secondary"} name={"Login"} />
             </Link>
             {/* Adding Buttons for now will add icons later */}
-            <Link to="/mycart">
+            <Link to="/cart">
               <Button btnclass={"btn-secondary"} name={"Cart"} />
             </Link>
             <Link to="/wishlist">
