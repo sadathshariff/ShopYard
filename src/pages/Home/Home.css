@@ -1,0 +1,9 @@
+.categories-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.home-container {
+  width: 90%;
+  margin: 1rem auto;
+  gap: 1rem;
+}

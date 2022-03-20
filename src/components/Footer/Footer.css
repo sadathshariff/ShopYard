@@ -1,0 +1,19 @@
+.footer .footer-social-links {
+  display: flex;
+  justify-content: center;
+}
+.footer-social-links ul {
+  padding-inline-start: 0;
+  display: flex;
+}
+
+.footer-social-links li {
+  padding: 1rem;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.footer-bottom-div {
+  align-items: center;
+  justify-content: center;
+}
