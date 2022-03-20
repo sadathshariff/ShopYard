@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import MockAPI from "../mockMan";
 import {
   Home,
   Products,
@@ -18,6 +19,7 @@ export const RouterPath = () => {
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/mock-api" element={<MockAPI />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
