@@ -1,5 +1,4 @@
 import "./ProductCard.css";
-import { FiHeart } from "react-icons/fi";
 export const ProductCard = (props) => {
   const { img, name, price, description } = props;
   return (

@@ -15,7 +15,7 @@ export const products = [
     description: "Light mauve/Do Good",
     categoryName: "hoddies",
     rating: 4.5,
-    fastDelivery: true,
+    fastDelivery: false,
     isLiked: false,
   },
   {
@@ -51,7 +51,7 @@ export const products = [
     description: "Grey/Dreamscape",
     categoryName: "hoddies",
     rating: 3.5,
-    fastDelivery: true,
+    fastDelivery: false,
     isLiked: false,
   },
   {
@@ -75,7 +75,7 @@ export const products = [
     description: "Orange/The Digital Detox",
     categoryName: "hoddies",
     rating: 3.5,
-    fastDelivery: true,
+    fastDelivery: false,
     isLiked: false,
   },
 
@@ -124,7 +124,7 @@ export const products = [
     description: "Light green/Rick and Morty",
     categoryName: "tshirts",
     rating: 4,
-    fastDelivery: true,
+    fastDelivery: false,
     isLiked: false,
   },
   {
@@ -172,14 +172,14 @@ export const products = [
     description: "Red/White floral",
     categoryName: "dresses",
     rating: 4,
-    fastDelivery: true,
+    fastDelivery: false,
     isLiked: false,
   },
   {
     _id: uuid(),
     title: "tie-collar-dress",
     name: "Tie-collar dress",
-    price: 4499,
+    price: 3999,
     img: "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fc2%2Fa5%2Fc2a59b27334fe5a3f01dfa284d97f9eb85853c67.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
     description: "Cerise/Block-coloured",
     categoryName: "dresses",
@@ -208,7 +208,7 @@ export const products = [
     description: "Blue/Green checked",
     categoryName: "shirts",
     rating: 4,
-    fastDelivery: true,
+    fastDelivery: false,
     isLiked: false,
   },
   {
@@ -256,7 +256,7 @@ export const products = [
     description: "Khaki green",
     categoryName: "shirts",
     rating: 4,
-    fastDelivery: true,
+    fastDelivery: false,
     isLiked: false,
   },
 ];

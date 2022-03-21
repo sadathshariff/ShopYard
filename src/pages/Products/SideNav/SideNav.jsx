@@ -216,6 +216,7 @@ export const SideNav = () => {
             <datalist className="datalist-price-range">
               <option value="1000" label="1000" />
               <option value="2000" label="2000" />
+
               <option value="3000" label="3000" />
               <option value="4000" label="4000" />
             </datalist>
