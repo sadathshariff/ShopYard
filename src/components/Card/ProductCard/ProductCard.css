@@ -1,0 +1,9 @@
+.card {
+  width: 19rem;
+  height: max-content;
+  margin: 1rem;
+  background-color: var(--off-white);
+}
+.card-img:hover {
+  cursor: pointer;
+}
