@@ -1,5 +1,4 @@
-
-import { useFilter } from "../../../contexts/filterContext/context";
+import { useFilter } from "../../../contexts";
 import "./SideNav.css";
 export const SideNav = () => {
   const { filterstate, filterdispatch } = useFilter();
