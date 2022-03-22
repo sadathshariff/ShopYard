@@ -14,7 +14,7 @@ export const ProductDetail = () => {
           <p className="small-text-2">Products</p>
         </Link>
       </div>
-      <div className="product-container">
+      <div className="product-container flex-center">
         <div className="product-details">
           <div className="product-details-img">
             <img src={img} alt={name} className="resp-img" />

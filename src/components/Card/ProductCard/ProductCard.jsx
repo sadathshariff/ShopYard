@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useFilter } from "../../../contexts/filterContext/context";
+import { useFilter } from "../../../contexts";
 import styles from "./ProductCard.module.css";
 export const ProductCard = (props) => {
   const { img, name, price, description } = props;

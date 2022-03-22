@@ -1,13 +1,11 @@
 .product-container {
-  margin: 1rem auto;
+  margin: 0 auto;
   width: 60%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .back-nav-div {
-  margin: 1rem;
+  margin: 0 1rem;
   text-align: start;
   letter-spacing: 1px;
 }

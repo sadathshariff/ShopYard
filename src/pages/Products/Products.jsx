@@ -1,7 +1,7 @@
-import { Loading, ProductCard } from "../../components/index";
+import { Loading, ProductCard } from "../../components";
 import "./Products.css";
 import { SideNav } from "./SideNav/SideNav";
-import { useFilter } from "../../contexts/filterContext/context";
+import { useFilter } from "../../contexts";
 export const Products = () => {
   const { products, loading, error } = useFilter();
 
