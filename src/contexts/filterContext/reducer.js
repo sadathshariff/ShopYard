@@ -12,7 +12,6 @@ export const reducerFunction = (state, action) => {
       const newCategory = state.category.includes(action.payload)
         ? state.category.filter((p) => p !== action.payload)
         : [...state.category, action.payload];
-      console.log(newCategory);
       return { ...state, category: newCategory };
 
     case "CLEAR_FILTERS":

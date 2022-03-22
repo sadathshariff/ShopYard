@@ -20,11 +20,11 @@ const SortByPriceRange = (state, data) =>
   data.filter((product) => product.price <= state.priceRange);
 
 const FilterByCategory = (state, data) => {
-  // console.log(state.category.length === 0);
   return state.category.length === 0
     ? data
     : data.filter((product) => state.category.includes(product.categoryName));
 };
+
 const Compose =
   (state, ...functions) =>
   (data) => {
