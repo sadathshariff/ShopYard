@@ -1,9 +1,10 @@
-import { Action } from "history";
+
 import { useFilter } from "../../../contexts/filterContext/context";
 import "./SideNav.css";
 export const SideNav = () => {
-  const { state, dispatch } = useFilter();
-  const { sortBy, showFastDelivery, rating, priceRange, category } = state;
+  const { filterstate, filterdispatch } = useFilter();
+  const { sortBy, showFastDelivery, rating, priceRange, category } =
+    filterstate;
 
   return (
     <>
@@ -12,7 +13,7 @@ export const SideNav = () => {
           <h3 className="headline-3">Filters</h3>
           <button
             className="btn btn-outline-secondary"
-            onClick={() => dispatch({ type: "CLEAR_FILTERS" })}
+            onClick={() => filterdispatch({ type: "CLEAR_FILTERS" })}
           >
             Clear
           </button>
@@ -29,7 +30,10 @@ export const SideNav = () => {
                   name="SORT_BY_PRICE"
                   checked={sortBy === "HIGH_TO_LOW"}
                   onChange={(e) =>
-                    dispatch({ type: "SORT_BY_PRICE", payload: e.target.value })
+                    filterdispatch({
+                      type: "SORT_BY_PRICE",
+                      payload: e.target.value,
+                    })
                   }
                 />
                 High To Low
@@ -44,7 +48,10 @@ export const SideNav = () => {
                   name="SORT_BY_PRICE"
                   checked={sortBy === "LOW_TO_HIGH"}
                   onChange={(e) =>
-                    dispatch({ type: "SORT_BY_PRICE", payload: e.target.value })
+                    filterdispatch({
+                      type: "SORT_BY_PRICE",
+                      payload: e.target.value,
+                    })
                   }
                 />
                 Low To High
@@ -63,7 +70,7 @@ export const SideNav = () => {
                   id="tshirts"
                   value="tshirts"
                   onChange={(e) =>
-                    dispatch({
+                    filterdispatch({
                       type: "FILTER_BY_CATEGORY",
                       payload: e.target.value,
                     })
@@ -81,7 +88,7 @@ export const SideNav = () => {
                   id="dresses"
                   value="dresses"
                   onChange={(e) =>
-                    dispatch({
+                    filterdispatch({
                       type: "FILTER_BY_CATEGORY",
                       payload: e.target.value,
                     })
@@ -100,7 +107,7 @@ export const SideNav = () => {
                   value="hoddies"
                   checked={category.includes("hoddies")}
                   onChange={(e) =>
-                    dispatch({
+                    filterdispatch({
                       type: "FILTER_BY_CATEGORY",
                       payload: e.target.value,
                     })
@@ -118,7 +125,7 @@ export const SideNav = () => {
                   value="shirts"
                   checked={category.includes("shirts")}
                   onChange={(e) =>
-                    dispatch({
+                    filterdispatch({
                       type: "FILTER_BY_CATEGORY",
                       payload: e.target.value,
                     })
@@ -141,7 +148,7 @@ export const SideNav = () => {
                   value="SHOW_FAST_DELIVERY"
                   checked={showFastDelivery}
                   onChange={(e) =>
-                    dispatch({
+                    filterdispatch({
                       type: "SHOW_FAST_DELIVERY",
                       payload: e.target.checked,
                     })
@@ -164,7 +171,7 @@ export const SideNav = () => {
                   id="rating_4"
                   checked={rating == 4}
                   onChange={(e) =>
-                    dispatch({
+                    filterdispatch({
                       type: "SORT_BY_RATING",
                       payload: e.target.value,
                     })
@@ -182,7 +189,7 @@ export const SideNav = () => {
                   id="rating_3"
                   checked={rating == 3}
                   onChange={(e) =>
-                    dispatch({
+                    filterdispatch({
                       type: "SORT_BY_RATING",
                       payload: e.target.value,
                     })
@@ -207,7 +214,7 @@ export const SideNav = () => {
               className="price-range"
               value={priceRange}
               onChange={(e) =>
-                dispatch({
+                filterdispatch({
                   type: "SORT_BY_PRICE_RANGE",
                   payload: e.target.value,
                 })

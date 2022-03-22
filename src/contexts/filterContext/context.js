@@ -1,5 +1,5 @@
-import { useContext, useReducer, useEffect, createContext } from "react";
-import { reducerFunction } from "./reducer";
+import { useContext, useReducer, createContext } from "react";
+import { filterReducer } from "./reducer";
 import {
   FastDelivery,
   SortByPrice,
@@ -22,9 +22,9 @@ const FilterProvider = ({ children }) => {
   const { response, loading, error } = UseAxios("/api/products");
   const data = response.products || [];
 
-  const [state, dispatch] = useReducer(reducerFunction, initialState);
+  const [filterstate, filterdispatch] = useReducer(filterReducer, initialState);
   const filteredProducts = Compose(
-    state,
+    filterstate,
     SortByPrice,
     FastDelivery,
     SortByRating,
@@ -34,7 +34,13 @@ const FilterProvider = ({ children }) => {
 
   return (
     <FilterContext.Provider
-      value={{ state, dispatch, products: filteredProducts, loading, error }}
+      value={{
+        filterstate,
+        filterdispatch,
+        products: filteredProducts,
+        loading,
+        error,
+      }}
     >
       {children}
     </FilterContext.Provider>
