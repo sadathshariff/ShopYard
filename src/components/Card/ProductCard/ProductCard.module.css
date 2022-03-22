@@ -1,0 +1,12 @@
+.card {
+  position: relative;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  max-width: 17rem;
+  background-color: var(--off-white);
+  margin: 0.5rem 0;
+}
+.card-img:hover {
+  cursor: pointer;
+}

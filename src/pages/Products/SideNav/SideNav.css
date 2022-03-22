@@ -1,0 +1,19 @@
+.side-nav-container {
+  margin: 0 1rem;
+}
+.side-nav {
+  margin: 0.5rem 0;
+}
+.side-nav-filter {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-range {
+  width: 100%;
+}
+.datalist-price-range {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
