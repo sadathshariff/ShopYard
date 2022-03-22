@@ -1,8 +1,8 @@
-import "./ProductCard.css";
+import styles from "./ProductCard.module.css";
 export const ProductCard = (props) => {
   const { img, name, price, description } = props;
   return (
-    <div className="card">
+    <div className={styles.card}>
       <img src={img} alt={name} className="card-img" />
       <div className="card-close-icon"></div>
       <div className="card-header">
