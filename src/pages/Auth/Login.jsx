@@ -10,7 +10,7 @@ export const Login = () => {
     email: "",
     password: "",
   };
-  const testCredentials = {
+  const guestCredential = {
     email: "adarshbalika@gmail.com",
     password: "adarshbalika",
   };
@@ -91,7 +91,7 @@ export const Login = () => {
               <Button
                 btnclass={"btn-outline-secondary"}
                 name={"Login With Test Credential "}
-                onClick={() => setLoginDetails(testCredentials)}
+                onClick={() => setLoginDetails(guestCredential)}
               />
             </div>
 

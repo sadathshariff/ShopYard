@@ -10,7 +10,6 @@ export const ProductDetail = () => {
     showProduct;
   const { checkUserLogin, loggedIn } = useAuth();
   const addToCart = () => {
-    // checkUserLogin();
     if (loggedIn) {
       console.log("added to cart");
     } else {
@@ -42,10 +41,7 @@ export const ProductDetail = () => {
               </p>
             </div>
             <div className="product-details-btns">
-              <button
-                className="btn btn-outline-primary"
-                onClick={() => console.log("add to Wishlist")}
-              >
+              <button className="btn btn-outline-primary">
                 Save to Wishlist
               </button>
               <button className="btn btn-primary" onClick={addToCart}>
