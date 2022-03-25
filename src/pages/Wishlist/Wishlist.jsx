@@ -1,3 +1,11 @@
+import { useAuth } from "../../contexts";
+
 export const Wishlist = () => {
-  return <div>This is Wishlist Page</div>;
+  const { checkUserLogin } = useAuth();
+  checkUserLogin();
+  return (
+    <>
+      <h1>Wishlist Page</h1>
+    </>
+  );
 };
