@@ -1,3 +1,10 @@
+import { useAuth } from "../../contexts";
 export const Cart = () => {
-  return <div>This is Cart Page</div>;
+  const { checkUserLogin } = useAuth();
+  checkUserLogin();
+  return (
+    <>
+      <h1>Cart Page</h1>
+    </>
+  );
 };

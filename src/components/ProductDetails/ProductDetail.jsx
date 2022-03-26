@@ -1,11 +1,21 @@
 import "./ProductDetail.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdNavigateBefore } from "react-icons/md";
 import { useFilter } from "../../contexts/filterContext/context";
+import { useAuth } from "../../contexts/Auth/context";
 export const ProductDetail = () => {
   const { showProduct } = useFilter();
+  const navigate = useNavigate();
   const { name, img, price, categoryName, description, fastDelivery, rating } =
     showProduct;
+  const { checkUserLogin, loggedIn } = useAuth();
+  const addToCart = () => {
+    if (loggedIn) {
+      console.log("added to cart");
+    } else {
+      navigate("../login");
+    }
+  };
   return (
     <div>
       <div className="back-nav-div">
@@ -34,7 +44,9 @@ export const ProductDetail = () => {
               <button className="btn btn-outline-primary">
                 Save to Wishlist
               </button>
-              <button className="btn btn-primary">ADD TO CART</button>
+              <button className="btn btn-primary" onClick={addToCart}>
+                ADD TO CART
+              </button>
             </div>
           </div>
         </div>

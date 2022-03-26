@@ -1,7 +1,5 @@
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { ImSpinner6 } from "react-icons/im";
 import "./Loading.css";
 export const Loading = () => {
-  return (
-    <div className="loading-div">{<AiOutlineLoading3Quarters size={50} />}</div>
-  );
+  return <div className="loading-div">{<ImSpinner6 size={50} />}</div>;
 };

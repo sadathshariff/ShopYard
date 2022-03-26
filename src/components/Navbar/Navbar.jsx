@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { Button } from "../index";
+import { useAuth } from "../../contexts";
 export const Navbar = () => {
+  const { loggedIn, logoutHandler } = useAuth();
   return (
     <>
       <header className="header navbar-container">
@@ -18,9 +20,17 @@ export const Navbar = () => {
         </div>
         <nav>
           <div className="nav-items flex">
-            <Link to="/login">
-              <Button btnclass={"btn-secondary"} name={"Login"} />
-            </Link>
+            {loggedIn ? (
+              <Button
+                btnclass={"btn-secondary"}
+                name={"Logout"}
+                onClick={logoutHandler}
+              />
+            ) : (
+              <Link to="/login">
+                <Button btnclass={"btn-secondary"} name={"Login"} />
+              </Link>
+            )}
             {/* Adding Buttons for now will add icons later */}
             <Link to="/cart">
               <Button btnclass={"btn-secondary"} name={"Cart"} />
