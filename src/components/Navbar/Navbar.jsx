@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import { FaShoppingBag, FaHeart } from "react-icons/fa";
 import "./Navbar.css";
 import { Button } from "../index";
-import { useAuth } from "../../contexts";
+import { useAuth, useCart } from "../../contexts";
 export const Navbar = () => {
   const { loggedIn, logoutHandler } = useAuth();
+  const { cartState } = useCart();
   return (
     <>
       <header className="header navbar-container">
@@ -31,12 +33,21 @@ export const Navbar = () => {
                 <Button btnclass={"btn-secondary"} name={"Login"} />
               </Link>
             )}
-            {/* Adding Buttons for now will add icons later */}
             <Link to="/cart">
-              <Button btnclass={"btn-secondary"} name={"Cart"} />
+              <div className="badge-div">
+                <FaShoppingBag size={30} />
+                {cartState.cart.length > 0 ? (
+                  <span className="badge-number">{cartState.cart.length}</span>
+                ) : (
+                  ""
+                )}
+              </div>
             </Link>
             <Link to="/wishlist">
-              <Button btnclass={"btn-secondary"} name={"WishList"} />
+              <div className="badge-div">
+                <FaHeart size={30} />
+                {/* <span className="badge-number"></span> */}
+              </div>
             </Link>
           </div>
         </nav>

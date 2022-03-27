@@ -15,3 +15,9 @@
   padding: 0.5rem;
   width: 30rem;
 }
+.badge-div .badge-number {
+  font-size: 1rem;
+  background-color: var(--success-color);
+  top: -12px;
+  left: 20px;
+}
