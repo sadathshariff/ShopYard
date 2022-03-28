@@ -20,7 +20,6 @@ export const HorizontalCard = ({ product }) => {
   const updateProductQty = async (id, type) => {
     try {
       const updatedCartQty = await updateCartQty(id, type, token);
-      console.log(updatedCartQty);
       if (updatedCartQty) {
         cartDispatch({ type: "UPDATE_QTY", payload: updatedCartQty });
       }
@@ -57,7 +56,6 @@ export const HorizontalCard = ({ product }) => {
           <p className="small-text-2">{qty}</p>
           <FaPlus
             onClick={() => {
-              console.log("Inc", qty);
               updateProductQty(_id, "increment");
             }}
             className="icon-click"

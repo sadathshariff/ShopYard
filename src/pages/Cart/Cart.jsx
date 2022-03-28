@@ -1,27 +1,32 @@
 import "./Cart.css";
 import { useAuth, useCart } from "../../contexts";
 import { HorizontalCard, Button } from "../../components";
+export const CalculateTotal = (cart) => {
+  const priceObj = {
+    totalItems: 0,
+    totalCostOfProduct: 0,
+    totalDiscount: 0,
+  };
+  const { totalItems, totalCostOfProduct, totalDiscount } = cart.reduce(
+    (acc, curr) => ({
+      ...acc,
+      totalItems: acc.totalItems + curr.qty,
+      totalCostOfProduct: acc.totalCostOfProduct + curr.price * curr.qty,
+      totalDiscount: acc.totalDiscount + curr.discount * curr.qty,
+    }),
+    priceObj
+  );
+
+  return { totalItems, totalCostOfProduct, totalDiscount };
+};
 export const Cart = () => {
   const { checkUserLogin } = useAuth();
   checkUserLogin();
   const { cartState } = useCart();
   const { cart } = cartState;
 
-  const totalItems = cart.reduce((acc, curr) => {
-    acc = acc + curr.qty;
-    return acc;
-  }, 0);
-
-  const totalCostOfProduct = cart.reduce((acc, curr) => {
-    acc = acc + curr.price * curr.qty;
-    return acc;
-  }, 0);
-
-  const totalDiscount = cart.reduce((acc, curr) => {
-    acc = acc + curr.discount * curr.qty;
-    return acc;
-  }, 0);
-
+  const { totalItems, totalCostOfProduct, totalDiscount } =
+    CalculateTotal(cart);
   const totalAmount =
     totalCostOfProduct > 0 ? totalCostOfProduct - totalDiscount + 199 : 0;
 
@@ -46,23 +51,23 @@ export const Cart = () => {
                 <h3 className="list-label">Price Details</h3>
                 <li>
                   <p>Price({totalItems} items)</p>
-                  <p>₹{totalCostOfProduct}</p>
+                  <p>&#8377;{totalCostOfProduct}</p>
                 </li>
                 <li>
                   <p>Discount</p>
-                  <p>₹{totalDiscount}</p>
+                  <p>&#8377;{totalDiscount}</p>
                 </li>
                 <li>
                   <p>Delivery Charges</p>
-                  <p>₹199</p>
+                  <p>&#8377;199</p>
                 </li>
                 <li className="cart-item-total-amount">
                   <p className="small-text-3">Total Amount</p>
-                  <p className="small-text-3">₹{totalAmount}</p>
+                  <p className="small-text-3">&#8377;{totalAmount}</p>
                 </li>
               </ul>
               <p className="small-text-3 cart-item-footer-text">
-                You will save ₹{amountSaved} on this order
+                You will save &#8377;{amountSaved} on this order
               </p>
               <div className="cart-item-btns">
                 <Button btnclass={"btn-primary"} name={"Checkout"} />
