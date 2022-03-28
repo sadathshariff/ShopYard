@@ -26,11 +26,11 @@ export const deleteFromCart = async (productId, token) => {
       headers: { authorization: token },
     });
     if (res.status === 200) {
-      ShowToast("Product deleted successfully!", "success");
+      ShowToast("Product removed successfully!", "success");
       return res.data.cart;
     }
   } catch (error) {
-    ShowToast("Failed to delete product,Please try again later.", "error");
+    ShowToast("Failed to remove product,Please try again later.", "error");
     console.error(error);
   }
 };
