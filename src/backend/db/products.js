@@ -17,6 +17,7 @@ export const products = [
     rating: 4.5,
     fastDelivery: false,
     isLiked: false,
+    discount: 99,
   },
   {
     _id: uuid(),
@@ -29,6 +30,7 @@ export const products = [
     rating: 4,
     fastDelivery: true,
     isLiked: false,
+    discount: 199,
   },
   {
     _id: uuid(),
@@ -41,6 +43,7 @@ export const products = [
     rating: 4.8,
     fastDelivery: true,
     isLiked: false,
+    discount: 299,
   },
   {
     _id: uuid(),
@@ -53,6 +56,7 @@ export const products = [
     rating: 3.5,
     fastDelivery: false,
     isLiked: false,
+    discount: 199,
   },
   {
     _id: uuid(),
@@ -65,6 +69,7 @@ export const products = [
     rating: 3,
     fastDelivery: true,
     isLiked: false,
+    discount: 199,
   },
   {
     _id: uuid(),
@@ -77,6 +82,7 @@ export const products = [
     rating: 3.5,
     fastDelivery: false,
     isLiked: false,
+    discount: 199,
   },
 
   {
@@ -90,6 +96,7 @@ export const products = [
     rating: 4.5,
     fastDelivery: true,
     isLiked: false,
+    discount: 99,
   },
   {
     _id: uuid(),
@@ -102,6 +109,7 @@ export const products = [
     rating: 3.5,
     fastDelivery: true,
     isLiked: false,
+    discount: 99,
   },
   {
     _id: uuid(),
@@ -114,6 +122,7 @@ export const products = [
     rating: 3,
     fastDelivery: true,
     isLiked: false,
+    discount: 99,
   },
   {
     _id: uuid(),
@@ -126,6 +135,7 @@ export const products = [
     rating: 4,
     fastDelivery: false,
     isLiked: false,
+    discount: 199,
   },
   {
     _id: uuid(),
@@ -138,6 +148,7 @@ export const products = [
     rating: 3,
     fastDelivery: true,
     isLiked: false,
+    discount: 99,
   },
   {
     _id: uuid(),
@@ -150,6 +161,7 @@ export const products = [
     rating: 4,
     fastDelivery: true,
     isLiked: false,
+    discount: 99,
   },
   {
     _id: uuid(),
@@ -162,6 +174,7 @@ export const products = [
     rating: 3.5,
     fastDelivery: true,
     isLiked: false,
+    discount: 99,
   },
   {
     _id: uuid(),
@@ -174,6 +187,7 @@ export const products = [
     rating: 4,
     fastDelivery: false,
     isLiked: false,
+    discount: 299,
   },
   {
     _id: uuid(),
@@ -186,6 +200,7 @@ export const products = [
     rating: 4.5,
     fastDelivery: true,
     isLiked: false,
+    discount: 299,
   },
   {
     _id: uuid(),
@@ -198,6 +213,7 @@ export const products = [
     rating: 4,
     fastDelivery: true,
     isLiked: false,
+    discount: 299,
   },
   {
     _id: uuid(),
@@ -210,6 +226,7 @@ export const products = [
     rating: 4,
     fastDelivery: false,
     isLiked: false,
+    discount: 199,
   },
   {
     _id: uuid(),
@@ -222,6 +239,7 @@ export const products = [
     rating: 4,
     fastDelivery: true,
     isLiked: false,
+    discount: 99,
   },
   {
     _id: uuid(),
@@ -234,6 +252,7 @@ export const products = [
     rating: 3.4,
     fastDelivery: true,
     isLiked: false,
+    discount: 299,
   },
   {
     _id: uuid(),
@@ -246,6 +265,7 @@ export const products = [
     rating: 3,
     fastDelivery: true,
     isLiked: false,
+    discount: 99,
   },
   {
     _id: uuid(),
@@ -258,5 +278,6 @@ export const products = [
     rating: 4,
     fastDelivery: false,
     isLiked: false,
+    discount: 199,
   },
 ];

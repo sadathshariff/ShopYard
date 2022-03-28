@@ -1,26 +1,44 @@
 import "./ProductDetail.css";
 import { Link, useNavigate } from "react-router-dom";
-import { MdNavigateBefore } from "react-icons/md";
 import { useFilter } from "../../contexts/filterContext/context";
 import { useAuth } from "../../contexts/Auth/context";
+import { useCart } from "../../contexts/Cart/context";
+import { Button } from "../index";
+import { useState } from "react";
+
 export const ProductDetail = () => {
   const { showProduct } = useFilter();
+  const {
+    _id,
+    name,
+    img,
+    price,
+    categoryName,
+    description,
+    fastDelivery,
+    rating,
+  } = showProduct;
+  const { loggedIn } = useAuth();
+  const { cartDispatch, postToCart, cartState } = useCart();
+  const { cart } = cartState;
+  const token = localStorage.getItem("UserToken");
   const navigate = useNavigate();
-  const { name, img, price, categoryName, description, fastDelivery, rating } =
-    showProduct;
-  const { checkUserLogin, loggedIn } = useAuth();
-  const addToCart = () => {
-    if (loggedIn) {
-      console.log("added to cart");
-    } else {
-      navigate("../login");
+
+  const addToCart = async (product) => {
+    try {
+      const newCart = await postToCart(product, token);
+      if (newCart) {
+        cartDispatch({ type: "ADD_TO_CART", payload: newCart });
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
+
   return (
     <div>
       <div className="back-nav-div">
         <Link to="/products">
-          <MdNavigateBefore size={30} />
           <p className="small-text-2">Products</p>
         </Link>
       </div>
@@ -44,9 +62,21 @@ export const ProductDetail = () => {
               <button className="btn btn-outline-primary">
                 Save to Wishlist
               </button>
-              <button className="btn btn-primary" onClick={addToCart}>
-                ADD TO CART
-              </button>
+              {cart.find((item) => item._id === _id) ? (
+                <Button
+                  btnclass={"btn-success"}
+                  name={"Go To Cart"}
+                  onClick={() => navigate("/cart")}
+                />
+              ) : (
+                <Button
+                  btnclass={"btn-primary"}
+                  name={"ADD TO CART"}
+                  onClick={() =>
+                    loggedIn ? addToCart(props) : navigate("../login")
+                  }
+                />
+              )}
             </div>
           </div>
         </div>

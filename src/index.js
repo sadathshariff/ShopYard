@@ -4,19 +4,18 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
-import { FilterProvider, AuthProvider } from "./contexts";
-// import { AuthProvider } from "./contexts";
-
-// Call make Server
+import { FilterProvider, AuthProvider, CartProvider } from "./contexts";
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
-        <FilterProvider>
-          <App />
-        </FilterProvider>
+        <CartProvider>
+          <FilterProvider>
+            <App />
+          </FilterProvider>
+        </CartProvider>
       </AuthProvider>
     </Router>
   </React.StrictMode>,
