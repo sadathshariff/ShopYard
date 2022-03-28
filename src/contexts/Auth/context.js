@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ShowToast } from "../../components";
 
 const AuthContext = createContext(null);
 
@@ -26,6 +27,7 @@ const AuthProvider = ({ children }) => {
   const logoutHandler = () => {
     localStorage.removeItem("UserToken");
     setLoggedIn(false);
+    ShowToast("You are Logged Out", "success");
     navigate("/");
   };
 
