@@ -1,31 +1,19 @@
 import "./HorizontalCard.css";
 import { FaMinus, FaPlus, FaTrash } from "react-icons/fa";
 import { Button } from "../../index";
-import { useCart } from "../../../contexts";
+import { useCart, useWishlist } from "../../../contexts";
+import { removeFromCart, updateProductQty } from "../../../utils/cart";
+import { addToWishlist } from "../../../utils/wishlist";
 export const HorizontalCard = ({ product }) => {
   const { _id, name, img, description, price, qty } = product;
   const { cartDispatch, deleteFromCart, updateCartQty } = useCart();
-  const token = localStorage.getItem("UserToken");
-
-  const removeFromCart = async (id) => {
-    try {
-      const deletedItem = await deleteFromCart(id, token);
-      if (deletedItem) {
-        cartDispatch({ type: "REMOVE_FROM_CART", payload: deletedItem });
-      }
-    } catch (err) {
-      console.log(err);
+  const { postToWishlist, wishlistDispatch, wishlist } = useWishlist();
+ 
+  const moveToWishlist = async (product) => {
+    if (!wishlist.find((p) => p._id === product._id)) {
+      addToWishlist(product, wishlistDispatch, postToWishlist);
     }
-  };
-  const updateProductQty = async (id, type) => {
-    try {
-      const updatedCartQty = await updateCartQty(id, type, token);
-      if (updatedCartQty) {
-        cartDispatch({ type: "UPDATE_QTY", payload: updatedCartQty });
-      }
-    } catch (error) {
-      console.error(error);
-    }
+    removeFromCart(product._id, cartDispatch, deleteFromCart);
   };
   return (
     <div className="cart-item-card">
@@ -41,14 +29,14 @@ export const HorizontalCard = ({ product }) => {
           {qty === 1 ? (
             <FaTrash
               onClick={() => {
-                removeFromCart(_id);
+                removeFromCart(_id, cartDispatch, deleteFromCart);
               }}
               className="icon-click"
             />
           ) : (
             <FaMinus
               onClick={() => {
-                updateProductQty(_id, "decrement");
+                updateProductQty(_id, "decrement", cartDispatch, updateCartQty);
               }}
               className="icon-click"
             />
@@ -56,17 +44,21 @@ export const HorizontalCard = ({ product }) => {
           <p className="small-text-2">{qty}</p>
           <FaPlus
             onClick={() => {
-              updateProductQty(_id, "increment");
+              updateProductQty(_id, "increment", cartDispatch, updateCartQty);
             }}
             className="icon-click"
           />
         </div>
         <div className="cart-item-btns">
-          <Button btnclass={"btn-secondary"} name={"Move To Wishlist"} />
+          <Button
+            btnclass={"btn-secondary"}
+            name={"Move To Wishlist"}
+            onClick={() => moveToWishlist(product)}
+          />
           <Button
             btnclass={"btn-danger"}
             name={"Remove From Cart"}
-            onClick={() => removeFromCart(_id)}
+            onClick={() => removeFromCart(_id, cartDispatch, deleteFromCart)}
           />
         </div>
       </div>
