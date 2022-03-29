@@ -54,7 +54,7 @@ export const ProductDetail = () => {
                 <Button
                   btnclass={"btn-success"}
                   name={"Go To Wishlist"}
-                  onClick={() => navigate("/wishlist")}
+                  onClick={() => navigate("/wishlist", { replace: true })}
                 />
               ) : (
                 <Button
@@ -67,7 +67,7 @@ export const ProductDetail = () => {
                           wishlistDispatch,
                           postToWishlist
                         )
-                      : navigate("../login")
+                      : navigate("../login", { replace: true })
                   }
                 />
               )}
@@ -76,7 +76,7 @@ export const ProductDetail = () => {
                 <Button
                   btnclass={"btn-success"}
                   name={"Go To Cart"}
-                  onClick={() => navigate("/cart")}
+                  onClick={() => navigate("/cart", { replace: true })}
                 />
               ) : (
                 <Button
@@ -85,7 +85,7 @@ export const ProductDetail = () => {
                   onClick={() =>
                     loggedIn
                       ? addToCart(showProduct, cartDispatch, postToCart)
-                      : navigate("../login")
+                      : navigate("../login", { replace: true })
                   }
                 />
               )}

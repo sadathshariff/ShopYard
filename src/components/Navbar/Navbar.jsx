@@ -2,16 +2,22 @@ import { Link } from "react-router-dom";
 import { FaShoppingBag, FaHeart } from "react-icons/fa";
 import "./Navbar.css";
 import { Button } from "../index";
-import { useAuth, useCart, useWishlist } from "../../contexts";
+import { useAuth, useCart, useFilter, useWishlist } from "../../contexts";
 export const Navbar = () => {
   const { loggedIn, logoutHandler } = useAuth();
   const { cartState } = useCart();
   const { wishlist } = useWishlist();
+  const { filterdispatch } = useFilter();
   return (
     <>
       <header className="header navbar-container">
         <Link to="/">
-          <h2 className="heading-2">ShopYard</h2>
+          <h2
+            className="heading-2"
+            onClick={() => filterdispatch({ type: "CLEAR_FILTERS" })}
+          >
+            ShopYard
+          </h2>
         </Link>
         <div className="input-search-div">
           <input

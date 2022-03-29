@@ -2,7 +2,7 @@ import "./auth.css";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useState } from "react";
-import { Button } from "../../components";
+import { Button, ShowToast } from "../../components";
 import axios from "axios";
 import { useAuth } from "../../contexts";
 export const Login = () => {
@@ -11,8 +11,8 @@ export const Login = () => {
     password: "",
   };
   const guestCredential = {
-    email: "adarshbalika@gmail.com",
-    password: "adarshbalika",
+    email: "john@gmail.com",
+    password: "johndee",
   };
   const navigate = useNavigate();
   const { setResponse } = useAuth();
@@ -31,16 +31,17 @@ export const Login = () => {
       if (res.status === 200) {
         setResponse(res);
         localStorage.setItem("UserToken", res.data.encodedToken);
+        ShowToast("Successfully Logged In", "success");
         setLoginDetails(initialData);
         navigate("/");
       }
     } catch (error) {
       setError("Email Entered is Not Registered");
+      ShowToast("Email Entered is Not Registered", "error");
     }
   };
   const submitLoginHandler = (e) => {
-    e.preventDefault();
-    console.log(loginDetails);
+    e.preventDefault();   
     handleLogin(loginDetails);
   };
   return (
@@ -59,7 +60,7 @@ export const Login = () => {
                 required
                 value={loginDetails.email}
                 onChange={(e) => handleChange(e)}
-                placeholder="test@test.com"
+                placeholder="test@gmail.com"
               />
             </div>
             <div className="input">
@@ -79,7 +80,11 @@ export const Login = () => {
                   setShowPassoword((prev) => !prev);
                 }}
               >
-                {showPassword ? <FaEye /> : <FaEyeSlash />}
+                {showPassword ? (
+                  <FaEye className="eye-icon" />
+                ) : (
+                  <FaEyeSlash className="eye-icon" />
+                )}
               </span>
             </div>
             <div className="input">

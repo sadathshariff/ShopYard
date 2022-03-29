@@ -2,7 +2,7 @@ import "./auth.css";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useState } from "react";
-import { Button } from "../../components";
+import { Button, ShowToast } from "../../components";
 import axios from "axios";
 import { useAuth } from "../../contexts";
 
@@ -20,7 +20,6 @@ export const Signup = () => {
     password: false,
     confirmPassword: false,
   });
-  const [error, setError] = useState("");
   const { setResponse } = useAuth();
   const handleChange = (e) => {
     const name = e.target.name;
@@ -34,14 +33,15 @@ export const Signup = () => {
   const handleSignup = async (userDetails) => {
     try {
       const res = await axios.post("/api/auth/signup", userDetails);
-      console.log("Sign", res);
       if (res.status === 201) {
         setResponse(res.data.createdUser);
+        ShowToast("Successfully Signed Up", "success");
         setUserDetails(initialData);
         navigate("../login");
       }
     } catch (error) {
       console.log(error);
+      ShowToast("Something went wrong,Please Try again later", "error");
     }
   };
 
@@ -110,7 +110,11 @@ export const Signup = () => {
                   });
                 }}
               >
-                {showPassword.password ? <FaEye /> : <FaEyeSlash />}
+                {showPassword.password ? (
+                  <FaEye className="eye-icon" />
+                ) : (
+                  <FaEyeSlash className="eye-icon" />
+                )}
               </span>
             </div>
             <div className="input">
@@ -133,7 +137,11 @@ export const Signup = () => {
                   });
                 }}
               >
-                {showPassword.confirmPassword ? <FaEye /> : <FaEyeSlash />}
+                {showPassword.confirmPassword ? (
+                  <FaEye className="eye-icon" />
+                ) : (
+                  <FaEyeSlash className="eye-icon" />
+                )}
               </span>
             </div>
             <div className="input">
