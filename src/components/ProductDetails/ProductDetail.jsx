@@ -26,26 +26,6 @@ export const ProductDetail = () => {
   const { wishlist, wishlistDispatch, postToWishlist } = useWishlist();
   const navigate = useNavigate();
 
-  // const addToCart = async (product) => {
-  //   try {
-  //     const newCart = await postToCart(product, token);
-  //     if (newCart) {
-  //       cartDispatch({ type: "ADD_TO_CART", payload: newCart });
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-  // const addToWishlist = async (product) => {
-  //   try {
-  //     const newWishlist = await postToWishlist(product, token);
-  //     if (newWishlist) {
-  //       wishlistDispatch({ type: "ADD_TO_WISHLIST", payload: newWishlist });
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
   return (
     <div>
       <div className="back-nav-div">
