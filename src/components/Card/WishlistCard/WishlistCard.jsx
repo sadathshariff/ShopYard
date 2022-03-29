@@ -2,7 +2,7 @@ import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useFilter, useCart, useWishlist } from "../../../contexts";
 import { Button } from "../../index";
-import { addToCart } from "../../../utils/cart";
+import { addToCart, updateProductQty } from "../../../utils/cart";
 import { addToWishlist, removeFromWishlist } from "../../../utils/wishlist";
 export const WishlistCard = ({ product }) => {
   const { setShowProduct } = useFilter();
@@ -17,7 +17,6 @@ export const WishlistCard = ({ product }) => {
     } else {
       addToCart(product, cartDispatch, postToCart);
     }
-
     removeFromWishlist(product._id, wishlistDispatch, deleteFromWishlist);
   };
   return (
