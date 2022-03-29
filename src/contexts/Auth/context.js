@@ -1,21 +1,17 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ShowToast } from "../../components";
-
 const AuthContext = createContext(null);
-
 const AuthProvider = ({ children }) => {
   const [response, setResponse] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const userToken = localStorage.getItem("UserToken");
   const navigate = useNavigate();
-
   useEffect(() => {
     if (userToken) {
       setLoggedIn(true);
     }
   }, [userToken]);
-
   const checkUserLogin = () => {
     useEffect(() => {
       if (!userToken) {

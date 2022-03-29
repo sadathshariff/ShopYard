@@ -1,31 +1,41 @@
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { useFilter, useCart, useAuth } from "../../../contexts";
+import { useFilter, useCart, useAuth, useWishlist } from "../../../contexts";
 import styles from "./ProductCard.module.css";
 import { Button } from "../../index";
+import { addToCart } from "../../../utils/cart";
+import { addToWishlist, removeFromWishlist } from "../../../utils/wishlist";
 export const ProductCard = (props) => {
-  const { _id, img, name, price, description, isLiked } = props;
+  const { _id, img, name, price, description } = props;
   const { setShowProduct } = useFilter();
   const { loggedIn } = useAuth();
   const { cartDispatch, postToCart, cartState } = useCart();
   const { cart } = cartState;
-  const token = localStorage.getItem("UserToken");
+  const { wishlistDispatch, postToWishlist, wishlist, deleteFromWishlist } =
+    useWishlist();
   const navigate = useNavigate();
-  const addToCart = async (product) => {
-    try {
-      const newCart = await postToCart(product, token);
-      if (newCart) {
-        cartDispatch({ type: "ADD_TO_CART", payload: newCart });
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
   return (
     <div className={styles.card} onClick={() => setShowProduct(props)}>
       <img src={img} alt={name} className="card-img" />
       <div className="card-close-icon">
-        {isLiked ? <FaHeart color={"red"} /> : <FaRegHeart />}
+        {wishlist.find((item) => item._id === _id) ? (
+          <FaHeart
+            color={"red"}
+            onClick={() =>
+              loggedIn
+                ? removeFromWishlist(_id, wishlistDispatch, deleteFromWishlist)
+                : navigate("../login")
+            }
+          />
+        ) : (
+          <FaRegHeart
+            onClick={() =>
+              loggedIn
+                ? addToWishlist(props, wishlistDispatch, postToWishlist)
+                : navigate("../login")
+            }
+          />
+        )}
       </div>
       <Link to="/productDetails">
         <div className="card-header">
@@ -44,7 +54,11 @@ export const ProductCard = (props) => {
         <Button
           btnclass={"btn-primary"}
           name={"ADD TO CART"}
-          onClick={() => (loggedIn ? addToCart(props) : navigate("../login"))}
+          onClick={() =>
+            loggedIn
+              ? addToCart(props, cartDispatch, postToCart)
+              : navigate("../login")
+          }
         />
       )}
     </div>

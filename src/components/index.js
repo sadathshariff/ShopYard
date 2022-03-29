@@ -4,6 +4,6 @@ export { Category } from "./Category/Category";
 export { Banner } from "./Banner/Banner";
 export { Loading } from "./Loading/Loading";
 export { Footer } from "./Footer/Footer";
-export { ProductCard, HorizontalCard } from "./Card/index";
+export { ProductCard, HorizontalCard, WishlistCard } from "./Card/index";
 export { ProductDetail } from "./ProductDetails/ProductDetail";
 export { ShowToast } from "./Toast/Toast";

@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFilter } from "../../contexts/filterContext/context";
 import { useAuth } from "../../contexts/Auth/context";
 import { useCart } from "../../contexts/Cart/context";
+import { useWishlist } from "../../contexts";
 import { Button } from "../index";
-import { useState } from "react";
+import { addToCart } from "../../utils/cart";
+import { addToWishlist } from "../../utils/wishlist";
 
 export const ProductDetail = () => {
   const { showProduct } = useFilter();
@@ -21,19 +23,8 @@ export const ProductDetail = () => {
   const { loggedIn } = useAuth();
   const { cartDispatch, postToCart, cartState } = useCart();
   const { cart } = cartState;
-  const token = localStorage.getItem("UserToken");
+  const { wishlist, wishlistDispatch, postToWishlist } = useWishlist();
   const navigate = useNavigate();
-
-  const addToCart = async (product) => {
-    try {
-      const newCart = await postToCart(product, token);
-      if (newCart) {
-        cartDispatch({ type: "ADD_TO_CART", payload: newCart });
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   return (
     <div>
@@ -59,9 +50,28 @@ export const ProductDetail = () => {
               </p>
             </div>
             <div className="product-details-btns">
-              <button className="btn btn-outline-primary">
-                Save to Wishlist
-              </button>
+              {wishlist.find((item) => item._id === _id) ? (
+                <Button
+                  btnclass={"btn-success"}
+                  name={"Go To Wishlist"}
+                  onClick={() => navigate("/wishlist")}
+                />
+              ) : (
+                <Button
+                  btnclass={"btn-outline-primary"}
+                  name={"Save to Wishlist"}
+                  onClick={() =>
+                    loggedIn
+                      ? addToWishlist(
+                          showProduct,
+                          wishlistDispatch,
+                          postToWishlist
+                        )
+                      : navigate("../login")
+                  }
+                />
+              )}
+
               {cart.find((item) => item._id === _id) ? (
                 <Button
                   btnclass={"btn-success"}
@@ -73,7 +83,9 @@ export const ProductDetail = () => {
                   btnclass={"btn-primary"}
                   name={"ADD TO CART"}
                   onClick={() =>
-                    loggedIn ? addToCart(props) : navigate("../login")
+                    loggedIn
+                      ? addToCart(showProduct, cartDispatch, postToCart)
+                      : navigate("../login")
                   }
                 />
               )}

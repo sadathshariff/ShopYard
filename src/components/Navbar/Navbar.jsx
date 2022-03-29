@@ -2,10 +2,11 @@ import { Link } from "react-router-dom";
 import { FaShoppingBag, FaHeart } from "react-icons/fa";
 import "./Navbar.css";
 import { Button } from "../index";
-import { useAuth, useCart } from "../../contexts";
+import { useAuth, useCart, useWishlist } from "../../contexts";
 export const Navbar = () => {
   const { loggedIn, logoutHandler } = useAuth();
   const { cartState } = useCart();
+  const { wishlist } = useWishlist();
   return (
     <>
       <header className="header navbar-container">
@@ -46,7 +47,11 @@ export const Navbar = () => {
             <Link to="/wishlist">
               <div className="badge-div">
                 <FaHeart size={30} />
-                {/* <span className="badge-number"></span> */}
+                {wishlist.length > 0 ? (
+                  <span className="badge-number">{wishlist.length}</span>
+                ) : (
+                  ""
+                )}
               </div>
             </Link>
           </div>

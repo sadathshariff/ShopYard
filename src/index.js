@@ -4,7 +4,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
-import { FilterProvider, AuthProvider, CartProvider } from "./contexts";
+import {
+  FilterProvider,
+  AuthProvider,
+  CartProvider,
+  WishlistProvider,
+} from "./contexts";
 makeServer();
 
 ReactDOM.render(
@@ -12,9 +17,11 @@ ReactDOM.render(
     <Router>
       <AuthProvider>
         <CartProvider>
-          <FilterProvider>
-            <App />
-          </FilterProvider>
+          <WishlistProvider>
+            <FilterProvider>
+              <App />
+            </FilterProvider>
+          </WishlistProvider>
         </CartProvider>
       </AuthProvider>
     </Router>
