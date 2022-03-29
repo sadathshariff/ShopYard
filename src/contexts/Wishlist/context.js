@@ -16,7 +16,6 @@ const WishlistProvider = ({ children }) => {
       const res = await axios.get("/api/user/wishlist", {
         headers: { authorization: token },
       });
-      console.log(res);
       if (res.status === 200) {
         wishlistDispatch({ type: "SET_WISHLIST", payload: res.data.wishlist });
       }
