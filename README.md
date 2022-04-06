@@ -36,6 +36,7 @@ $ npm start
 - React JS
 - React Router
 
-## Demo
+### Demo
 
 ![ShopYard](https://res.cloudinary.com/sadath/image/upload/v1649207854/ShopYard/ShopYard_vmfvxn.gif)
+
