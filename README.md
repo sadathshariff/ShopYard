@@ -3,7 +3,7 @@
 </h1>
 
 <div align="center">
-ShopYard is a e-commerce website for branded and top quality clothes, we have variety of categories at ShopYard just visit product listing page you will see all products. apply filters as per your need and in just few clicks you can buy any products from our website.
+ShopYard is an e-commerce website for branded and top-quality clothes, we have a variety of categories at ShopYard just visit the product listing page you will see all products. apply filters as per your need and in just a few clicks you can buy any products from our website.
 </div><br/>
 
 ## **How to install and run locally ?**
