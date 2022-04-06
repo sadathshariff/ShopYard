@@ -4,6 +4,7 @@ export const ShowToast = (toastText, toastTheme) => {
     toast[toastTheme](toastText, {
       position: "bottom-center",
       autoClose: 1000,
+      theme: "dark",
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,

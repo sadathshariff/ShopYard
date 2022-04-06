@@ -19,7 +19,7 @@ export const Wishlist = () => {
             and it will show up here.
           </p>
           <Button
-            name={"Browse"}
+            name={"Shop Now"}
             btnclass={"btn-secondary"}
             onClick={() => navigate("/products")}
           />

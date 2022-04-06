@@ -17,11 +17,20 @@
 form .input {
   margin: 0.5rem 0;
   font-weight: 500;
+  position: relative;
 }
 form .input-text {
   font-size: 1.1rem;
+  position: relative;
 }
 
+form .eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 40px;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
 .error {
   color: red;
   padding: 0.5rem 0;

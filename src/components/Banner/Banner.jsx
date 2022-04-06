@@ -8,7 +8,7 @@ export const Banner = (props) => {
       <div className="img-banner">
         <img className="hero-img" src={bannerImg} alt="Banner" />
         <div className="overlay-text text-center">
-          <p className="small-text-1">{bannerText}</p>
+          <h2 className="headline-2">{bannerText}</h2>
           <Link to="/products">
             <Button btnclass={"btn-secondary"} name={"Shop Now"} />
           </Link>

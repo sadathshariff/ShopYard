@@ -24,7 +24,7 @@ export const ProductCard = (props) => {
             onClick={() =>
               loggedIn
                 ? removeFromWishlist(_id, wishlistDispatch, deleteFromWishlist)
-                : navigate("../login")
+                : navigate("../login", { replace: true })
             }
           />
         ) : (
@@ -32,7 +32,7 @@ export const ProductCard = (props) => {
             onClick={() =>
               loggedIn
                 ? addToWishlist(props, wishlistDispatch, postToWishlist)
-                : navigate("../login")
+                : navigate("../login", { replace: true })
             }
           />
         )}
@@ -48,7 +48,7 @@ export const ProductCard = (props) => {
         <Button
           btnclass={"btn-success"}
           name={"Go To Cart"}
-          onClick={() => navigate("/cart")}
+          onClick={() => navigate("/cart", { replace: true })}
         />
       ) : (
         <Button
@@ -57,7 +57,7 @@ export const ProductCard = (props) => {
           onClick={() =>
             loggedIn
               ? addToCart(props, cartDispatch, postToCart)
-              : navigate("../login")
+              : navigate("../login", { replace: true })
           }
         />
       )}
