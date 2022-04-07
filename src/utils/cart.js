@@ -1,7 +1,7 @@
 const token = localStorage.getItem("UserToken");
 export const addToCart = async (product, cartDispatch, postToCart) => {
   try {
-    const newCart = await postToCart(product, token);
+    const newCart = await postToCart(product);
     if (newCart) {
       cartDispatch({ type: "ADD_TO_CART", payload: newCart });
     }
@@ -12,7 +12,7 @@ export const addToCart = async (product, cartDispatch, postToCart) => {
 
 export const removeFromCart = async (id, cartDispatch, deleteFromCart) => {
   try {
-    const deletedItem = await deleteFromCart(id, token);
+    const deletedItem = await deleteFromCart(id);
     if (deletedItem) {
       cartDispatch({ type: "REMOVE_FROM_CART", payload: deletedItem });
     }
@@ -27,7 +27,7 @@ export const updateProductQty = async (
   updateCartQty
 ) => {
   try {
-    const updatedCart = await updateCartQty(id, type, token);
+    const updatedCart = await updateCartQty(id, type);
     if (updatedCart) {
       cartDispatch({ type: "UPDATE_QTY", payload: updatedCart });
     }

@@ -1,11 +1,10 @@
-const token = localStorage.getItem("UserToken");
 export const addToWishlist = async (
   product,
   wishlistDispatch,
   postToWishlist
 ) => {
   try {
-    const newWishlist = await postToWishlist(product, token);
+    const newWishlist = await postToWishlist(product);
     if (newWishlist) {
       wishlistDispatch({ type: "ADD_TO_WISHLIST", payload: newWishlist });
     }
@@ -19,7 +18,7 @@ export const removeFromWishlist = async (
   deleteFromWishlist
 ) => {
   try {
-    const newWishlist = await deleteFromWishlist(productId, token);
+    const newWishlist = await deleteFromWishlist(productId);
     if (newWishlist) {
       wishlistDispatch({
         type: "REMOVE_FROM_WISHLIST",
