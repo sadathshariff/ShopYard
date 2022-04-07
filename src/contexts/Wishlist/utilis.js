@@ -1,13 +1,13 @@
 import axios from "axios";
 import { ShowToast } from "../../components";
 
-export const postToWishlist = async (product, token) => {
+export const postToWishlist = async (product) => {
   try {
     const res = await axios.post(
       `/api/user/wishlist`,
       { product },
       {
-        headers: { authorization: token },
+        headers: { authorization: localStorage.getItem("UserToken") },
       }
     );
     if (res.status === 201) {
@@ -20,10 +20,10 @@ export const postToWishlist = async (product, token) => {
   }
 };
 
-export const deleteFromWishlist = async (productId, token) => {
+export const deleteFromWishlist = async (productId) => {
   try {
     const res = await axios.delete(`/api/user/wishlist/${productId}`, {
-      headers: { authorization: token },
+      headers: { authorization: localStorage.getItem("UserToken") },
     });
     if (res.status === 200) {
       ShowToast("Removed From Wishlist", "success");
