@@ -1,4 +1,3 @@
-const token = localStorage.getItem("UserToken");
 export const addToCart = async (product, cartDispatch, postToCart) => {
   try {
     const newCart = await postToCart(product);
