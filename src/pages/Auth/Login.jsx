@@ -33,7 +33,7 @@ export const Login = () => {
         localStorage.setItem("UserToken", res.data.encodedToken);
         ShowToast("Successfully Logged In", "success");
         setLoginDetails(initialData);
-        navigate("/");
+        navigate("/", { replace: true });
       }
     } catch (error) {
       setError("Email Entered is Not Registered");
@@ -41,7 +41,7 @@ export const Login = () => {
     }
   };
   const submitLoginHandler = (e) => {
-    e.preventDefault();   
+    e.preventDefault();
     handleLogin(loginDetails);
   };
   return (
