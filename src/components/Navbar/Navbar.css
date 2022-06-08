@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   padding: 0.5rem;
@@ -13,8 +13,10 @@
   border-radius: 10px;
   font-weight: 500;
   padding: 0.5rem;
-  width: 30rem;
+  width: 22rem;
+ 
 }
+
 .badge-div .badge-number {
   font-size: 1rem;
   background-color: var(--success-color);
