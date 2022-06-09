@@ -25,6 +25,12 @@ const FilterByCategory = (state, data) => {
     : data.filter((product) => state.category.includes(product.categoryName));
 };
 
+const FilterBySearch = (state, data) => {
+  return data.filter((product) =>
+    product.name.toLowerCase().includes(state.search.toLowerCase())
+  );
+};
+
 const Compose =
   (state, ...functions) =>
   (data) => {
@@ -39,5 +45,6 @@ export {
   SortByRating,
   SortByPriceRange,
   FilterByCategory,
+  FilterBySearch,
   Compose,
 };
