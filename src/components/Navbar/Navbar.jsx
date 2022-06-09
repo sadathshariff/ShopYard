@@ -9,27 +9,16 @@ export const Navbar = () => {
   const [input, setInput] = useState("");
   const { cartState } = useCart();
   const { wishlist } = useWishlist();
-  const { filterdispatch, products } = useFilter();
+  const { filterdispatch } = useFilter();
 
-  const debounce = (cb, delay = 1000) => {
-    let timer;
-    return (...args) => {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        cb(args);
-      }, delay);
-    };
-  };
-
-  const debounceText = debounce((text) => setInput(text));
-  const filteredProducts = products.filter((item) => {
-    return Object.values(item.name).join("").toLowerCase().includes(input);
-  });
   const handleChange = (e) => {
-    debounceText(e.target.value);
+    setInput(e.target.value);
+    filterdispatch({
+      type: "FILTER_BY_SEARCH",
+      payload: e.target.value,
+    });
   };
 
-  console.log(filteredProducts);
   return (
     <>
       <header className="header navbar-container">
@@ -44,11 +33,11 @@ export const Navbar = () => {
 
         <div className="input-search-div">
           <input
-            type="text"
+            type="search"
             name="search"
             className="input-search"
             placeholder="Search Products"
-            value={input}
+            defaultValue={input}
             onChange={(e) => handleChange(e)}
           />
         </div>
