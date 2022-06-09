@@ -7,6 +7,7 @@ import {
   Compose,
   SortByPriceRange,
   FilterByCategory,
+  FilterBySearch,
 } from "./utilis";
 import { UseAxios } from "../../hooks";
 const FilterContext = createContext(null);
@@ -18,6 +19,7 @@ const FilterProvider = ({ children }) => {
     rating: 1,
     priceRange: 4000,
     category: [],
+    search: "",
   };
   const { response, loading, error } = UseAxios("/api/products");
   const data = response.products || [];
@@ -30,7 +32,8 @@ const FilterProvider = ({ children }) => {
     FastDelivery,
     SortByRating,
     SortByPriceRange,
-    FilterByCategory
+    FilterByCategory,
+    FilterBySearch
   )(data);
 
   return (
