@@ -26,7 +26,7 @@ export const updateProductQty = async (
   updateCartQty
 ) => {
   try {
-    const updatedCart = await updateCartQty(id, type );
+    const updatedCart = await updateCartQty(id, type);
     if (updatedCart) {
       cartDispatch({ type: "UPDATE_QTY", payload: updatedCart });
     }

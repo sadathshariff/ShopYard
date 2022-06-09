@@ -2,6 +2,7 @@
 <b>ShopYard</b>
 </h1>
 
+
 <div align="center">
 ShopYard is an e-commerce website for branded and top-quality clothes, we have a variety of categories at ShopYard just visit the product listing page you will see all products. apply filters as per your need and in just a few clicks you can buy any products from our website.
 </div><br/>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ShowToast } from "../../components";
 
-export const postToCart = async (product, token) => {
+export const postToCart = async (product) => {
   try {
     const res = await axios.post(
       `/api/user/cart`,
@@ -20,7 +20,7 @@ export const postToCart = async (product, token) => {
   }
 };
 
-export const deleteFromCart = async (productId, token) => {
+export const deleteFromCart = async (productId) => {
   try {
     const res = await axios.delete(`/api/user/cart/${productId}`, {
       headers: { authorization: localStorage.getItem("UserToken") },
@@ -35,7 +35,7 @@ export const deleteFromCart = async (productId, token) => {
   }
 };
 
-export const updateCartQty = async (productId, type, token) => {
+export const updateCartQty = async (productId, type) => {
   try {
     const res = await axios.post(
       `/api/user/cart/${productId}`,

@@ -13,7 +13,8 @@ export const filterReducer = (state, action) => {
         ? state.category.filter((p) => p !== action.payload)
         : [...state.category, action.payload];
       return { ...state, category: newCategory };
-
+    case "FILTER_BY_SEARCH":
+      return { ...state, search: action.payload };
     case "CLEAR_FILTERS":
       return {
         sortBy: "",

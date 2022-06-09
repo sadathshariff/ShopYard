@@ -1,13 +1,24 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import { FaShoppingBag, FaHeart } from "react-icons/fa";
 import "./Navbar.css";
 import { Button } from "../index";
 import { useAuth, useCart, useFilter, useWishlist } from "../../contexts";
 export const Navbar = () => {
   const { loggedIn, logoutHandler } = useAuth();
+  const [input, setInput] = useState("");
   const { cartState } = useCart();
   const { wishlist } = useWishlist();
   const { filterdispatch } = useFilter();
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
+    filterdispatch({
+      type: "FILTER_BY_SEARCH",
+      payload: e.target.value,
+    });
+  };
+
   return (
     <>
       <header className="header navbar-container">
@@ -19,14 +30,18 @@ export const Navbar = () => {
             ShopYard
           </h2>
         </Link>
+
         <div className="input-search-div">
           <input
-            type="text"
+            type="search"
             name="search"
             className="input-search"
             placeholder="Search Products"
+            defaultValue={input}
+            onChange={(e) => handleChange(e)}
           />
         </div>
+
         <nav>
           <div className="nav-items flex">
             {loggedIn ? (

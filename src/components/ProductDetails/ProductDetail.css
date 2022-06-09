@@ -38,7 +38,19 @@
 }
 
 @media screen and (max-width: 760px) {
+  .product-container {
+    width: 80%;
+  }
   .product-details {
     flex-wrap: wrap;
+  }
+  .product-details-img {
+    margin: auto;
+  }
+  .product-details-btns {
+    display: block;
+  }
+  .product-details-btns button {
+    margin-top: 0.5rem;
   }
 }

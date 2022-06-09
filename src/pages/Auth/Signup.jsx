@@ -37,7 +37,7 @@ export const Signup = () => {
         setResponse(res.data.createdUser);
         ShowToast("Successfully Signed Up", "success");
         setUserDetails(initialData);
-        navigate("../login");
+        navigate("../login", { replace: true });
       }
     } catch (error) {
       console.log(error);
