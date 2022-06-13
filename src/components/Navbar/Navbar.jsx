@@ -14,6 +14,15 @@ export const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const debounce = (cb, delay = 1000) => {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        cb(...args);
+      }, delay);
+    };
+  };
   const handleChange = (e) => {
     if (location.pathname !== "/products") {
       navigate("/products");
@@ -44,7 +53,7 @@ export const Navbar = () => {
             className="input-search"
             placeholder="Search Products"
             defaultValue={input}
-            onChange={(e) => handleChange(e)}
+            onChange={(e) => debounce(handleChange(e), 1000)}
           />
         </div>
 
