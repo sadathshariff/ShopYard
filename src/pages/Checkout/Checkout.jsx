@@ -57,7 +57,7 @@ export const Checkout = () => {
     }
 
     const options = {
-      key: process.env.REACT_APP_RAZARPAY_KEY_ID,
+      key: process.env.REACT_APP_RAZORPAY_KEY_ID,
       currency: "INR",
       name: "ShopYard",
       description: "Thankyou for shopping",
