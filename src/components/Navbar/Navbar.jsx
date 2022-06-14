@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaShoppingBag, FaHeart } from "react-icons/fa";
 import "./Navbar.css";
 import { Button } from "../index";
@@ -11,7 +11,22 @@ export const Navbar = () => {
   const { wishlist } = useWishlist();
   const { filterdispatch } = useFilter();
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const debounce = (cb, delay = 1000) => {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        cb(...args);
+      }, delay);
+    };
+  };
   const handleChange = (e) => {
+    if (location.pathname !== "/products") {
+      navigate("/products");
+    }
     setInput(e.target.value);
     filterdispatch({
       type: "FILTER_BY_SEARCH",
@@ -38,7 +53,7 @@ export const Navbar = () => {
             className="input-search"
             placeholder="Search Products"
             defaultValue={input}
-            onChange={(e) => handleChange(e)}
+            onChange={(e) => debounce(handleChange(e), 1000)}
           />
         </div>
 

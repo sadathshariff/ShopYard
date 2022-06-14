@@ -7,3 +7,4 @@ export { Footer } from "./Footer/Footer";
 export { ProductCard, HorizontalCard, WishlistCard } from "./Card/index";
 export { ProductDetail } from "./ProductDetails/ProductDetail";
 export { ShowToast } from "./Toast/Toast";
+export { AddressModal } from "./Address/AddressModal";
