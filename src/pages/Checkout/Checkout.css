@@ -1,0 +1,26 @@
+.checkout-container {
+  width: 90%;
+  height: 100%;
+  margin: 1rem auto;
+}
+.checkout-div {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.address-list {
+  width: 100%;
+}
+.address-box {
+  border: 1px solid var(--text-color);
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+.address-details {
+  padding: 0 0.5rem;
+  width: 100%;
+}
+.address-label {
+  margin: 0.4rem 0;
+}
+.place-order-btn {
+  width: 100%;
+}
