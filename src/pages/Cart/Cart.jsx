@@ -1,6 +1,7 @@
 import "./Cart.css";
 import { useAuth, useCart } from "../../contexts";
 import { HorizontalCard, Button } from "../../components";
+import { useNavigate } from "react-router-dom";
 export const CalculateTotal = (cart) => {
   const priceObj = {
     totalItems: 0,
@@ -22,13 +23,15 @@ export const CalculateTotal = (cart) => {
 export const Cart = () => {
   const { checkUserLogin } = useAuth();
   checkUserLogin();
+  const navigate = useNavigate();
   const { cartState } = useCart();
   const { cart } = cartState;
 
   const { totalItems, totalCostOfProduct, totalDiscount } =
     CalculateTotal(cart);
+
   const totalAmount =
-    totalCostOfProduct > 0 ? totalCostOfProduct - totalDiscount + 199 : 0;
+    totalCostOfProduct > 0 ? totalCostOfProduct - totalDiscount + 399 : 0;
 
   const amountSaved = totalCostOfProduct + 199 - totalAmount;
   return (
@@ -38,6 +41,11 @@ export const Cart = () => {
         {cart.length === 0 ? (
           <div className="empty-div text-center">
             <h2 className="headline-2">YOUR SHOPPING BAG IS EMPTY!</h2>
+            <Button
+              name={"Shop Now"}
+              btnclass={"btn-secondary"}
+              onClick={() => navigate("/products")}
+            />
           </div>
         ) : (
           <>
@@ -59,7 +67,7 @@ export const Cart = () => {
                 </li>
                 <li>
                   <p>Delivery Charges</p>
-                  <p>&#8377;199</p>
+                  <p>&#8377;399</p>
                 </li>
                 <li className="cart-item-total-amount">
                   <p className="small-text-3">Total Amount</p>
@@ -70,7 +78,11 @@ export const Cart = () => {
                 You will save &#8377;{amountSaved} on this order
               </p>
               <div className="cart-item-btns">
-                <Button btnclass={"btn-primary"} name={"Checkout"} />
+                <Button
+                  btnclass={"btn-primary"}
+                  name={"Checkout"}
+                  onClick={() => navigate("/checkout")}
+                />
               </div>
             </div>
           </>
