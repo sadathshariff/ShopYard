@@ -26,9 +26,11 @@ const FilterByCategory = (state, data) => {
 };
 
 const FilterBySearch = (state, data) => {
-  return data.filter((product) =>
-    product.name.toLowerCase().includes(state.search?.toLowerCase())
-  );
+  return state.search !== undefined
+    ? data.filter((product) =>
+        product.name.toLowerCase().includes(state.search?.toLowerCase())
+      )
+    : data;
 };
 
 const Compose =
