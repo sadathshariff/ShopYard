@@ -12,7 +12,8 @@
 }
 
 @media screen and (max-width: 760px) {
-  .products-container {
+  .products {
     grid-template-columns: 1fr;
+    width: 100%;
   }
 }
