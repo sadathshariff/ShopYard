@@ -1,7 +1,3 @@
-.footer {
-  position: sticky;
-  bottom: 0;
-}
 .footer .footer-social-links {
   display: flex;
   justify-content: center;
