@@ -33,7 +33,7 @@ export const Cart = () => {
   const totalAmount =
     totalCostOfProduct > 0 ? totalCostOfProduct - totalDiscount + 399 : 0;
 
-  const amountSaved = totalCostOfProduct + 199 - totalAmount;
+  const amountSaved = totalCostOfProduct + 399 - totalAmount;
   return (
     <>
       <h2 className="headline-2 text-center">My Cart ({cart.length}) </h2>
