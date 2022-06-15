@@ -93,7 +93,6 @@ export const AddressModal = () => {
               onChange={(e) => handleChange(e)}
             />
           </div>
-
           <div className="input">
             <label htmlFor="City">City*</label>
             <input
@@ -118,6 +117,7 @@ export const AddressModal = () => {
               onChange={(e) => handleChange(e)}
             />
           </div>
+
           <div className="input">
             <label htmlFor="country">Country*</label>
             <input
@@ -139,11 +139,11 @@ export const AddressModal = () => {
               className="input-text"
               required
               value={newAddress.pincode}
-              // max={6}
               name="pincode"
               onChange={(e) => handleChange(e)}
             />
           </div>
+
           <div className="input">
             <div className="grid grid-col-2">
               <button

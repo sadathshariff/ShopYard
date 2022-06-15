@@ -1,10 +1,11 @@
 .form-container {
   top: 50%;
   left: 50%;
-  position: fixed;
+  position: absolute;
   z-index: 3;
   transform: translate(-50%, -50%);
   background-color: var(--off-white);
-  padding: 0.5rem 1rem;
-  width: 350px;
+  padding: 1rem;
+  height: 60%;
+  overflow-y: scroll;
 }
