@@ -68,6 +68,7 @@ export const Checkout = () => {
         if (response.razorpay_payment_id) {
           ShowToast("Payment successful", "success");
           cartDispatch({ type: "REMOVE_FROM_CART", payload: [] });
+          navigate("/");
         }
       },
 
