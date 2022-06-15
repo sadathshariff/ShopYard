@@ -11,7 +11,6 @@ export const Checkout = () => {
     addressDispatch,
     setShowForm,
     setNewAddress,
-
     setIsEdit,
   } = useAddress();
   const { cartState, cartDispatch } = useCart();
@@ -160,7 +159,7 @@ export const Checkout = () => {
 
                   <li>
                     <p className="small-text-3">Delivery Charges: </p>
-                    <p> - &#8377;399</p>
+                    <p>&#8377;399</p>
                   </li>
                   <li>
                     <p className="small-text-3">TOTAL: </p>
