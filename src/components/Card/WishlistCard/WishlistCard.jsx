@@ -4,8 +4,7 @@ import { useFilter, useCart, useWishlist } from "../../../contexts";
 import { Button } from "../../index";
 import { addToCart, updateProductQty } from "../../../utils/cart";
 import { addToWishlist, removeFromWishlist } from "../../../utils/wishlist";
-export const WishlistCard = ({ product }) => {
-  const { setShowProduct } = useFilter();
+export const WishlistCard = ({ product }) => { 
   const { cartDispatch, postToCart, cartState, updateCartQty } = useCart();
   const { cart } = cartState;
   const { wishlistDispatch, postToWishlist, wishlist, deleteFromWishlist } =
@@ -21,7 +20,7 @@ export const WishlistCard = ({ product }) => {
   };
   return (
     <>
-      <div className="card" onClick={() => setShowProduct(product)}>
+      <div className="card" >
         <img src={product.img} alt={product.name} className="card-img" />
         <div className="card-close-icon">
           {wishlist.find((item) => item._id === product._id) ? (

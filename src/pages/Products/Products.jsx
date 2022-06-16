@@ -4,7 +4,6 @@ import { SideNav } from "./SideNav/SideNav";
 import { useFilter } from "../../contexts";
 export const Products = () => {
   const { products, loading, error } = useFilter();
-
   return (
     <div className="products-container">
       <SideNav />

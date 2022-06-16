@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 export const UseAxios = (apiUrl) => {
-  const [response, setResponse] = useState({});
+  const [response, setResponse] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const getData = async () => {
