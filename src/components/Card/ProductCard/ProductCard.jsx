@@ -6,8 +6,7 @@ import { Button } from "../../index";
 import { addToCart } from "../../../utils/cart";
 import { addToWishlist, removeFromWishlist } from "../../../utils/wishlist";
 export const ProductCard = (props) => {
-  const { _id, img, name, price, description } = props;
-  const { setShowProduct } = useFilter();
+  const { _id, img, name, price, description, id } = props;
   const { loggedIn } = useAuth();
   const { cartDispatch, postToCart, cartState } = useCart();
   const { cart } = cartState;
@@ -15,7 +14,7 @@ export const ProductCard = (props) => {
     useWishlist();
   const navigate = useNavigate();
   return (
-    <div className={styles.card} onClick={() => setShowProduct(props)}>
+    <div className={styles.card}>
       <img src={img} alt={name} className="card-img" />
       <div className="card-close-icon">
         {wishlist.find((item) => item._id === _id) ? (
@@ -37,7 +36,7 @@ export const ProductCard = (props) => {
           />
         )}
       </div>
-      <Link to="/productDetails">
+      <Link to={`/productDetails/${id}`}>
         <div className="card-header">
           <h3 className="headline-3">{name}</h3>
           <p className="small-text-2">Rs.{price}</p>
