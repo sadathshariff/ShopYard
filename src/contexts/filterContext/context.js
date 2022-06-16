@@ -1,4 +1,10 @@
-import { useContext, useState, useReducer, createContext } from "react";
+import {
+  useContext,
+  useState,
+  useReducer,
+  createContext,
+  useEffect,
+} from "react";
 import { filterReducer } from "./reducer";
 import {
   FastDelivery,
@@ -21,10 +27,13 @@ const FilterProvider = ({ children }) => {
     category: [],
     search: "",
   };
+  const [data, setData] = useState([]);
   const { response, loading, error } = UseAxios("/api/products");
-  const data = response.products || [];
 
-  const [showProduct, setShowProduct] = useState({});
+  useEffect(() => {
+    setData(response.products || []);
+  }, [response]);
+
   const [filterstate, filterdispatch] = useReducer(filterReducer, initialState);
   const filteredProducts = Compose(
     filterstate,
@@ -44,8 +53,6 @@ const FilterProvider = ({ children }) => {
         products: filteredProducts,
         loading,
         error,
-        showProduct,
-        setShowProduct,
       }}
     >
       {children}

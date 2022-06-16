@@ -1,5 +1,5 @@
 import "./ProductDetail.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useFilter } from "../../contexts/filterContext/context";
 import { useAuth } from "../../contexts/Auth/context";
 import { useCart } from "../../contexts/Cart/context";
@@ -9,17 +9,9 @@ import { addToCart } from "../../utils/cart";
 import { addToWishlist } from "../../utils/wishlist";
 
 export const ProductDetail = () => {
-  const { showProduct } = useFilter();
-  const {
-    _id,
-    name,
-    img,
-    price,
-    categoryName,
-    description,
-    fastDelivery,
-    rating,
-  } = showProduct;
+  const { products } = useFilter();
+  const { id } = useParams();
+  const details = products?.find((item) => item.id == id);
   const { loggedIn } = useAuth();
   const { cartDispatch, postToCart, cartState } = useCart();
   const { cart } = cartState;
@@ -36,21 +28,21 @@ export const ProductDetail = () => {
       <div className="product-container flex-center">
         <div className="product-details">
           <div className="product-details-img">
-            <img src={img} alt={name} className="resp-img" />
+            <img src={details?.img} alt={name} className="resp-img" />
           </div>
           <div className="product-details-div">
-            <h2 className="headline-2">Name: {name}</h2>
-            <h3 className="headline-3">Price: Rs.{price}</h3>
-            <p className="small-text-2">Description: {description}</p>
+            <h2 className="headline-2">Name: {details?.name}</h2>
+            <h3 className="headline-3">Price: Rs.{details?.price}</h3>
+            <p className="small-text-2">Description: {details?.description}</p>
             <div>
-              <p className="small-text-2">Category:{categoryName}</p>
-              <p className="small-text-2">Ratings: {rating}</p>
+              <p className="small-text-2">Category:{details?.categoryName}</p>
+              <p className="small-text-2">Ratings: {details?.rating}</p>
               <p className="small-text-2">
-                Fast Delivery: {fastDelivery ? "Available" : " Min 3 Days"}
+                Fast Delivery: {details?.fastDelivery ? "Available" : " Min 3 Days"}
               </p>
             </div>
             <div className="product-details-btns">
-              {wishlist.find((item) => item._id === _id) ? (
+              {wishlist.find((item) => item._id === details?._id) ? (
                 <Button
                   btnclass={"btn-success"}
                   name={"Go To Wishlist"}
@@ -63,7 +55,7 @@ export const ProductDetail = () => {
                   onClick={() =>
                     loggedIn
                       ? addToWishlist(
-                          showProduct,
+                          details,
                           wishlistDispatch,
                           postToWishlist
                         )
@@ -72,7 +64,7 @@ export const ProductDetail = () => {
                 />
               )}
 
-              {cart.find((item) => item._id === _id) ? (
+              {cart.find((item) => item._id === details?._id) ? (
                 <Button
                   btnclass={"btn-success"}
                   name={"Go To Cart"}
@@ -84,7 +76,7 @@ export const ProductDetail = () => {
                   name={"ADD TO CART"}
                   onClick={() =>
                     loggedIn
-                      ? addToCart(showProduct, cartDispatch, postToCart)
+                      ? addToCart(details, cartDispatch, postToCart)
                       : navigate("../login", { replace: true })
                   }
                 />
